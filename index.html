@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Prabal108 VR Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="js/animations.js"></script>
+    <style>
+      body { margin:0; }
+    </style>
+  </head>
+  <body>
+    <a-scene vr-mode-ui="enabled: true" shadow="type: pcfsoft">
+      <a-sky color="#162447"></a-sky>
+      <a-light type="ambient" color="#FFF" intensity="0.5"></a-light>
+      <a-light type="spot" position="0 5 0" angle="35" intensity="1.2" target="#center"></a-light>
+      <!-- Panels and Spheres omitted for brevity (use previous code) -->
+      <!-- Info Panels (hidden by default, shown on click) -->
+      <a-entity id="infoPanel" visible="false">
+        <a-plane position="0 1.6 -2" width="3.0" height="2.0" color="#fff" material="opacity:0.98">
+          <a-text id="panelText" value="" color="#222" width="2.7" align="center" position="0 0 0.01"></a-text>
+        </a-plane>
+      </a-entity>
+    </a-scene>
+    <script>
+      function showPanel(section) {
+        var infoPanel = document.getElementById('infoPanel');
+        var panelText = document.getElementById('panelText');
+        infoPanel.setAttribute('visible', true);
+        switch(section) {
+          case 'about':
+            panelText.setAttribute('value', "Prabal108\n\nVR Enthusiast & Innovator\nHP Omnicept G2 | Muse S Atena\nCollaboration with Architect Dept.\nPushing boundaries of immersive design.");
+            break;
+          case 'projects':
+            panelText.setAttribute('value', "Featured Projects:\n\n- VR Architectural Gallery\n- Muse S Atena Collaboration\n- Interactive 3D Visualization\nVisit GitHub: github.com/Prabal108");
+            break;
+          case 'collab':
+            panelText.setAttribute('value', "Collaboration:\n\nWorking with Architecture Dept. to blend design and technology.\nUser-centric, awe-inspiring environments.\nLet's build the future, together!");
+            break;
+          case 'contact':
+            panelText.setAttribute('value', "Contact:\n\nEmail: prabal108@email.com\nGitHub: Prabal108\nPortfolio: prabal108.com\nLet's connect!");
+            break;
+        }
+        setTimeout(function(){ infoPanel.setAttribute('visible', false); }, 7000);
+      }
+    </script>
+  </body>
+</html>
